@@ -38,10 +38,10 @@ class AboutPage extends StatelessWidget {
                     //width: ScreenSizer.isDesktop(context) ? 800 : 600,
                     //color: Colors.blue,
                     child: Text(aboutMe,
-                        style: TextStyle(
-                            color: MyColors.grey500,
+                        style: MyTextStyle.regular(
+                          color: MyColors.grey500,
                             fontSize: 16,
-                            fontWeight: FontWeight.w500)),
+                        )),
                   ),
                   SizedBox(
                     height: 15,
