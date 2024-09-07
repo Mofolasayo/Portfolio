@@ -9,6 +9,7 @@ import 'package:mofolasayo/screens/quizapp.dart';
 import 'package:mofolasayo/screens/sizzle.dart';
 import 'package:mofolasayo/utils/colors.dart';
 import 'package:mofolasayo/utils/my_textstyle.dart';
+import 'package:mofolasayo/utils/screen_sizer.dart';
 
 class ProjectsPage extends StatelessWidget {
   const ProjectsPage({super.key});
@@ -17,21 +18,31 @@ class ProjectsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
+        width: ScreenSizer.isDesktop(context)
+            ? ScreenSizer.deviceWidth(context) * 0.8
+            : ScreenSizer.deviceWidth(context) * 0.2 + 110,
         //height: 1200,
         color: MyColors.greyIcon,
         child: Padding(
-          padding: const EdgeInsets.only(left: 30.0, top: 40, bottom: 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Projects',
-                style:
-                    MyTextStyle.medium(fontSize: 22, color: MyColors.grey500),
+          padding: const EdgeInsets.only(left: 0.0, top: 40, bottom: 0),
 
-                //  style: MyTextStyle.bold(fontSize: 30, color: MyColors.grey500),
+          //padding: const EdgeInsets.only(left: 30.0, top: 40, bottom: 0),
+          child: Column(
+            
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                //color: Colors.amber,
+                width: ScreenSizer.deviceWidth(context) * 0.88,
+                child: Text(
+                  'Projects',
+                  style:
+                      MyTextStyle.medium(fontSize: 22, color: MyColors.grey500),
+
+                  //  style: MyTextStyle.bold(fontSize: 30, color: MyColors.grey500),
+                ),
               ),
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -48,7 +59,7 @@ class ProjectsPage extends StatelessWidget {
                           widget: Meditag(),
                         ),
                         SizedBox(
-                          width: 25,
+                          width: ScreenSizer.isDesktop(context) ? 30 : 25,
                         ),
                         ProjectContainer(
                           imageUrl: 'assets/images/malltiverse.png',
@@ -57,7 +68,8 @@ class ProjectsPage extends StatelessWidget {
                           widget: Malltiverse(),
                         ),
                         SizedBox(
-                          width: 25,
+                          width: ScreenSizer.isDesktop(context) ? 30 : 25,
+
                         ),
                         ProjectContainer(
                           imageUrl: 'assets/images/decordash2.png',
@@ -66,7 +78,8 @@ class ProjectsPage extends StatelessWidget {
                           widget: Decordash(),
                         ),
                         SizedBox(
-                          width: 25,
+                          width: ScreenSizer.isDesktop(context) ? 30 : 25,
+
                         ),
                         ProjectContainer(
                             imageUrl: 'assets/images/angrybird.png',
@@ -74,7 +87,8 @@ class ProjectsPage extends StatelessWidget {
                             detail: 'Mobile Game App',
                             widget: Angrybird()),
                         SizedBox(
-                          width: 25,
+                          width: ScreenSizer.isDesktop(context) ? 30 : 25,
+
                         ),
                       ],
                     ),
@@ -95,7 +109,8 @@ class ProjectsPage extends StatelessWidget {
                           widget: Quizapp(),
                         ),
                         SizedBox(
-                          width: 25,
+                          width: ScreenSizer.isDesktop(context) ? 30 : 25,
+
                         ),
                         ProjectContainer(
                           imageUrl: 'assets/images/sizzle.jpg',
@@ -104,7 +119,8 @@ class ProjectsPage extends StatelessWidget {
                           widget: Sizzle(),
                         ),
                         SizedBox(
-                          width: 25,
+                          width: ScreenSizer.isDesktop(context) ? 30 : 25,
+
                         ),
                         ProjectContainer(
                           imageUrl: 'assets/images/calculator.png',
@@ -113,7 +129,8 @@ class ProjectsPage extends StatelessWidget {
                           widget: Calculator(),
                         ),
                         SizedBox(
-                          width: 25,
+                          width: ScreenSizer.isDesktop(context) ? 30 : 25,
+
                         ),
                         ProjectContainer(
                           imageUrl: 'assets/images/meditag.png',
@@ -122,7 +139,8 @@ class ProjectsPage extends StatelessWidget {
                           widget: Portifolio(),
                         ),
                         SizedBox(
-                          width: 25,
+                          width: ScreenSizer.isDesktop(context) ? 30 : 25,
+
                         ),
                       ],
                       

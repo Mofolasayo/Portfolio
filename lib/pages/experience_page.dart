@@ -50,7 +50,7 @@ class _ExpereiencePageState extends State<ExpereiencePage>
               role:
                   'Swee - Lagos, Nigeria (Remote) | Mobile Application Developer',
               duties:
-                  '''Developed and maintained high-performance Flutter applications, ensuring a seamless user experience across Android and Web platforms. Collaborated with cross-functional teams to transform product visions into user-friendly, scalable apps. Implemented responsive UI/UX designs and animations, while consistently writing clean, maintainable Dart code.
+                  '''• Developed and maintained high-performance Flutter applications, ensuring a seamless user experience across Android and Web platforms.\n• Collaborated with cross-functional teams to transform product visions into user-friendly, scalable apps. \n• Implemented responsive UI/UX designs and animations, while consistently writing clean, maintainable Dart code.
         
         ''',
             ),
@@ -62,7 +62,7 @@ class _ExpereiencePageState extends State<ExpereiencePage>
               timeDuration: 'JUNE 2024 - AUGUST 2024',
               role: 'HNG Internship | Flutter Developer',
               duties:
-                  '''Collaborated with a team to develop intuitive mobile applications using Flutter, integrating RESTful APIs and third-party libraries to enhance functionality. Engaged in code reviews and utilized Git/GitHub for efficient source code management. Implemented local data storage with Hive, ensuring offline capabilities, while maintaining clean, well-documented Dart code.''',
+                  '''• Collaborated with a team to develop intuitive mobile applications using Flutter, integrating RESTful APIs and third-party libraries to enhance functionality. \n• Engaged in code reviews and utilized Git/GitHub for efficient source code management. \n• Implemented local data storage with Hive, ensuring offline capabilities, while maintaining clean, well-documented Dart code.''',
             ),
             SizedBox(
               height: 40,
@@ -116,7 +116,7 @@ class Expereience extends StatelessWidget {
             ),
             Text(
               duties,
-              style: MyTextStyle.regular(fontSize: 16, color: MyColors.grey600),
+              style: MyTextStyle.medium(fontSize: 16, color: MyColors.grey600),
             ),
           ],
         ),

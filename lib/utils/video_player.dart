@@ -79,7 +79,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                 ),
               ],
             )
-          : CircularProgressIndicator(),
+          : Center(child: CircularProgressIndicator()),
     );
   }
 }

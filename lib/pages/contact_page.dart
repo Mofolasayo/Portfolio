@@ -25,8 +25,9 @@ class ContactPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 50.0, bottom: 10),
                   child: Text('Want to connect with me?',
-                      style: MyTextStyle.semiBold(
-                          fontSize: 20, color: MyColors.grey500)),
+                    style: MyTextStyle.medium(
+                        fontSize: 22, color: MyColors.grey500),
+                  ),
                 ),
                 Container(
                   //color: Colors.blue,

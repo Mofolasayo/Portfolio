@@ -16,57 +16,68 @@ class AboutPage extends StatelessWidget {
 
       //color: Colors.white,
       child: ScreenSizer.isBigMobile(context) || ScreenSizer.isMobile(context)
-          ? Padding(
-              padding: const EdgeInsets.only(top: 10.0),
-              child: Column(
-                children: [
-                  circleAvatar(maxRadius: 100.0, minRadius: 60.0),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  AnimatedText(
-                    myFontWeight: FontWeight.bold,
-                    textHeight: ScreenSizer.isDesktop(context)
-                        ? ScreenSizer.deviceHeight(context) * 0.08
-                        : ScreenSizer.deviceHeight(context) * 0.06,
-                    fontSize40: ScreenSizer.isDesktop(context) ? 35 : 22,
-                    textWidth: ScreenSizer.deviceWidth(context) * 0.85,
-                  ),
-                  SizedBox(
-                    //height: ScreenSizer.deviceHeight(context) * 0.2,
-                    width: ScreenSizer.deviceWidth(context) * 0.85,
-                    //width: ScreenSizer.isDesktop(context) ? 800 : 600,
-                    //color: Colors.blue,
-                    child: Text(aboutMe,
-                        style: MyTextStyle.regular(
-                          color: MyColors.grey500,
-                            fontSize: 16,
-                        )),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    width: ScreenSizer.deviceWidth(context) * 0.85,
-                    //color: Colors.amber,
-                    height: ScreenSizer.isBigMobile(context)
-                        ? ScreenSizer.deviceHeight(context) * 0.05
-                        : ScreenSizer.deviceHeight(context) * 0.04,
-                    child: available(14),
-                  ),
-                  Container(
-                    width: ScreenSizer.deviceWidth(context) * 0.85,
-                    // color: Colors.red,
-                    child: resumeAndSocials(
-                      height: 40.0,
-                      width: 80.0,
-                      size: ScreenSizer.deviceWidth(context) * 0.3,
-                    ),
-                  )
-                ],
-              ),
-            )
+          ? Mobile()
           : desktopandTablet(),
+    );
+  }
+}
+
+class Mobile extends StatelessWidget {
+  const Mobile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10.0),
+      child: Column(
+        children: [
+          circleAvatar(maxRadius: 100.0, minRadius: 60.0),
+          SizedBox(
+            height: 15,
+          ),
+          AnimatedText(
+            myFontWeight: FontWeight.bold,
+            textHeight: ScreenSizer.isDesktop(context)
+                ? ScreenSizer.deviceHeight(context) * 0.08
+                : ScreenSizer.deviceHeight(context) * 0.06,
+            fontSize40: ScreenSizer.isDesktop(context) ? 35 : 22,
+            textWidth: ScreenSizer.deviceWidth(context) * 0.85,
+          ),
+          SizedBox(
+            //height: ScreenSizer.deviceHeight(context) * 0.2,
+            width: ScreenSizer.deviceWidth(context) * 0.85,
+            //width: ScreenSizer.isDesktop(context) ? 800 : 600,
+            //color: Colors.blue,
+            child: Text(aboutMe,
+                style: MyTextStyle.regular(
+                  color: MyColors.grey500,
+                  fontSize: 16,
+                )),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          SizedBox(
+            width: ScreenSizer.deviceWidth(context) * 0.85,
+            //color: Colors.amber,
+            height: ScreenSizer.isBigMobile(context)
+                ? ScreenSizer.deviceHeight(context) * 0.05
+                : ScreenSizer.deviceHeight(context) * 0.04,
+            child: available(14),
+          ),
+          Container(
+            width: ScreenSizer.deviceWidth(context) * 0.85,
+            // color: Colors.red,
+            child: resumeAndSocials(
+              height: 40.0,
+              width: 80.0,
+              size: ScreenSizer.deviceWidth(context) * 0.3,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
