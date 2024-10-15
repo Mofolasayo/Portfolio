@@ -16,21 +16,18 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color.fromARGB(255, 129, 156, 245)),
-          useMaterial3: true,
-
-          scaffoldBackgroundColor: MyColors.grey1000,
-          textTheme: TextTheme(
-              bodyMedium:
-                  MyTextStyle.regular(fontSize: 16, color: MyColors.grey600)),
-          appBarTheme: AppBarTheme(
-            
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 129, 156, 245)),
+        useMaterial3: true,
+        scaffoldBackgroundColor: MyColors.grey1000,
+        textTheme: TextTheme(
+            bodyMedium:
+                MyTextStyle.regular(fontSize: 18, color: MyColors.grey600)),
+        appBarTheme: AppBarTheme(
             backgroundColor: MyColors.grey1000,
             centerTitle: true,
             foregroundColor: MyColors.grey500),
       ),
-              
       home: const HomePage(),
     );
   }

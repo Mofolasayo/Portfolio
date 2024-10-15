@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mofolasayo/utils/colors.dart';
 import 'package:mofolasayo/utils/icons.dart';
 import 'package:mofolasayo/utils/screen_sizer.dart';
 
 class AnimatedIconsRow extends StatefulWidget {
+  const AnimatedIconsRow({super.key});
+
   @override
   _AnimatedIconsRowState createState() => _AnimatedIconsRowState();
 }

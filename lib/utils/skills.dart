@@ -9,6 +9,9 @@ class Skills extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: () {}, child: Text(text));
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: ElevatedButton(onPressed: () {}, child: Text(text)),
+    );
   }
 }

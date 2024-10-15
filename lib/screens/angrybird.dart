@@ -24,6 +24,7 @@ class _AngrybirdState extends State<Angrybird> with TickerProviderStateMixin {
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,12 +42,12 @@ class _AngrybirdState extends State<Angrybird> with TickerProviderStateMixin {
             child:
                 const VideoPlayerScreen(videoUrl: 'assets/videos/meditag.mp4'),
           ),
-          Container(
+          SizedBox(
             //color: Colors.red,
             width: ScreenSizer.deviceWidth(context) * 0.6,
             child: Bio(
               visible: visible,
-              widget: AngryBirdText(),
+              widget: const AngryBirdText(),
             ),
           )
         ],
@@ -63,7 +64,7 @@ class AngryBirdText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
+      child: SizedBox(
         height: ScreenSizer.deviceHeight(context) * 2,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -167,7 +168,7 @@ class AngryBirdText extends StatelessWidget {
                     'The game uses the flame_audio package to incorporate sound effects that enhance the overall experience. Sounds for launching, collisions, and game state changes provide feedback to the player, making the game more engaging.'),
               ],
             ),
-            Container(
+            SizedBox(
               width: ScreenSizer.deviceWidth(context) * 0.4,
               height: 70,
               // color: Colors.red,
