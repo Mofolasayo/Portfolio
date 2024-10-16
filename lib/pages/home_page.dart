@@ -71,7 +71,6 @@ class _HomePageState extends State<HomePage> {
     print('device WIdth is $deviceWidth');
 
     return Scaffold(
-      
         appBar: AppBar(
           leading: Padding(
             padding: const EdgeInsets.only(top: 15.0, left: 15.0),
@@ -128,10 +127,6 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-            const Padding(
-              padding: EdgeInsets.only(right: 20.0),
-              child: Icon(Icons.toggle_on),
-            )
           ],
           leadingWidth: 200,
         ),

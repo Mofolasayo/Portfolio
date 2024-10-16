@@ -24,35 +24,122 @@ class _QuizappState extends State<Quizapp> with TickerProviderStateMixin {
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
+        title: const Text("Quiz app"),
       ),
-      body: Center(
-          child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Container(
-            color: Colors.transparent,
-            height: 500,
-            width: ScreenSizer.deviceWidth(context) * 0.25,
-            child: const VideoPlayerScreen(
-              videoUrl: 'assets/videos/quiz.mp4',
-            ),
-          ),
-          Container(
-            //color: Colors.red,
-            width: ScreenSizer.deviceWidth(context) * 0.6,
-            child: Bio(
+      body: ScreenSizer.isBigMobile(context) ||
+              ScreenSizer.isMobile(context) ||
+              ScreenSizer.isSmallTablet(context)
+          ? QuizAppMobile(
               visible: visible,
-              widget: QuizAppText(),
-            ),
-          )
-        ],
-      )),
+            )
+          : QuizAppDesktop(visible: visible),
     );
+  }
+}
+
+class QuizAppMobile extends StatelessWidget {
+  const QuizAppMobile({
+    super.key,
+    required this.visible,
+  });
+
+  final bool visible;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scrollbar(
+      thumbVisibility: true,
+      thickness: 8.0,
+      radius: const Radius.circular(10),
+      child: SingleChildScrollView(
+        child: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const SizedBox(
+              height: 150,
+            ),
+            Container(
+              color: Colors.transparent,
+              height: 500,
+              width: ScreenSizer.deviceWidth(context) * 0.55,
+              child: const VideoPlayerScreen(
+                videoUrl: 'assets/videos/quiz.mp4',
+              ),
+            ),
+            const SizedBox(
+              height: 200,
+            ),
+            SizedBox(
+              //color: Colors.red,
+              width: ScreenSizer.deviceWidth(context) * 0.9,
+              child: Bio(
+                visible: visible,
+                widget: const QuizAppDescription(),
+              ),
+            )
+          ],
+        )),
+      ),
+    );
+  }
+}
+
+class QuizAppDesktop extends StatelessWidget {
+  const QuizAppDesktop({
+    super.key,
+    required this.visible,
+  });
+
+  final bool visible;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Container(
+          color: Colors.transparent,
+          height: 500,
+          width: ScreenSizer.deviceWidth(context) * 0.25,
+          child: const VideoPlayerScreen(
+            videoUrl: 'assets/videos/quiz.mp4',
+          ),
+        ),
+        SizedBox(
+          //color: Colors.red,
+          width: ScreenSizer.deviceWidth(context) * 0.6,
+          child: Bio(
+            visible: visible,
+            widget: const QuizAppDescription(),
+          ),
+        )
+      ],
+    ));
+  }
+}
+
+class QuizAppDescription extends StatelessWidget {
+  const QuizAppDescription({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ScreenSizer.isBigMobile(context) ||
+            ScreenSizer.isMobile(context) ||
+            ScreenSizer.isSmallTablet(context)
+        ? const QuizAppText()
+        : const SingleChildScrollView(
+            child: QuizAppText(),
+          );
   }
 }
 
@@ -63,88 +150,104 @@ class QuizAppText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        height: ScreenSizer.deviceHeight(context) * 1.8,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-                "The Interactive Flutter Quiz App is designed to challenge users with a variety of questions that test their knowledge across multiple topics. The app provides an engaging and educational experience by combining intuitive design with essential features that promote active learning and self-assessment."),
-            Text('Core Features',
-                style: MyTextStyle.semiBold(
-                    fontSize: 18, color: MyColors.grey600)),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+              "The Interactive Flutter Quiz App is designed to challenge users with a variety of questions that test their knowledge across multiple topics. The app provides an engaging and educational experience by combining intuitive design with essential features that promote active learning and self-assessment."),
+          const SizedBox(
+            height: 30,
+          ),
+          Text('Core Features',
+              style:
+                  MyTextStyle.semiBold(fontSize: 18, color: MyColors.grey600)),
+          const SizedBox(
+            height: 20,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('• Multiple Choice Format:',
+                  style: MyTextStyle.regular(
+                      fontSize: 18, color: MyColors.grey600)),
+              const Text(
+                  'The app presents questions in a multiple-choice format, offering several answer options for each question. This format encourages users to actively participate in the quiz, fostering critical thinking as they consider each possible answer before making their selection.'),
+            ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('• Real Time Feedback:',
+                  style: MyTextStyle.regular(
+                      fontSize: 18, color: MyColors.grey600)),
+              const Text(
+                  "As users answer each question, the app provides immediate feedback on whether the selected answer is correct or incorrect. This instant response allows users to track their performance in real-time, helping them to understand their strengths and weaknesses as they progress through the quiz."),
+            ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('• Answer Tracking:',
+                  style: MyTextStyle.regular(
+                      fontSize: 18, color: MyColors.grey600)),
+              const Text(
+                  'The app keeps a detailed record of all chosen answers, including both correct and incorrect selections. This tracking feature is invaluable for users who wish to review their performance, analyze mistakes, and focus on areas that require further study or improvement.'),
+            ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('• Final Score Calculation:',
+                  style: MyTextStyle.regular(
+                      fontSize: 18, color: MyColors.grey600)),
+              const Text(
+                  'After completing the quiz, the app calculates and displays a final score, summarizing the user’s overall performance. This feature provides a clear and concise evaluation of the user\'s knowledge, highlighting areas of excellence as well as topics that may need additional attention.'),
+            ],
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+          SizedBox(
+            width: ScreenSizer.deviceWidth(context),
+            height: 70,
+            child: const Wrap(
+              spacing: 5.0,
+              runSpacing: 2.0,
+              alignment: WrapAlignment.start,
               children: [
-                Text('• Multiple Choice Format:',
-                    style: MyTextStyle.regular(
-                        fontSize: 18, color: MyColors.grey600)),
-                Text(
-                    'The app presents questions in a multiple-choice format, offering several answer options for each question. This format encourages users to actively participate in the quiz, fostering critical thinking as they consider each possible answer before making their selection.'),
+                Skills(
+                  text: 'Flutter',
+                ),
+                Skills(
+                  text: 'Dart',
+                ),
+                Skills(
+                  text: 'NFC Technology',
+                ),
+                Skills(
+                  text: 'Provider',
+                ),
+                Skills(
+                  text: 'Hive',
+                ),
               ],
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('• Real Time Feedback:',
-                    style: MyTextStyle.regular(
-                        fontSize: 18, color: MyColors.grey600)),
-                Text(
-                    "As users answer each question, the app provides immediate feedback on whether the selected answer is correct or incorrect. This instant response allows users to track their performance in real-time, helping them to understand their strengths and weaknesses as they progress through the quiz."),
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('• Answer Tracking:',
-                    style: MyTextStyle.regular(
-                        fontSize: 18, color: MyColors.grey600)),
-                Text(
-                    'The app keeps a detailed record of all chosen answers, including both correct and incorrect selections. This tracking feature is invaluable for users who wish to review their performance, analyze mistakes, and focus on areas that require further study or improvement.'),
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('• Final Score Calculation:',
-                    style: MyTextStyle.regular(
-                        fontSize: 18, color: MyColors.grey600)),
-                Text(
-                    'After completing the quiz, the app calculates and displays a final score, summarizing the user’s overall performance. This feature provides a clear and concise evaluation of the user\'s knowledge, highlighting areas of excellence as well as topics that may need additional attention.'),
-              ],
-            ),
-            Container(
-              width: ScreenSizer.deviceWidth(context) * 0.4,
-              height: 70,
-              // color: Colors.red,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Skills(
-                    text: 'Flutter',
-                  ),
-                  Skills(
-                    text: 'Dart',
-                  ),
-                  Skills(
-                    text: 'NFC Technology',
-                  ),
-                  Skills(
-                    text: 'Provider',
-                  ),
-                  Skills(
-                    text: 'Hive',
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 200,
-            )
-          ],
-        ),
+          ),
+          const SizedBox(
+            height: 200,
+          )
+        ],
       ),
     );
   }

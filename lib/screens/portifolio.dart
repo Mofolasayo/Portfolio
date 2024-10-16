@@ -24,35 +24,103 @@ class _PortifolioState extends State<Portifolio> with TickerProviderStateMixin {
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text("Personal Portfolio"),
         automaticallyImplyLeading: true,
       ),
-      body: Center(
-          child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Container(
-            color: Colors.transparent,
-            height: 500,
-            width: ScreenSizer.deviceWidth(context) * 0.25,
-            child: const VideoPlayerScreen(
-              videoUrl: 'assets/videos/meditag.mp4',
-            ),
-          ),
-          Container(
-            //color: Colors.red,
-            width: ScreenSizer.deviceWidth(context) * 0.6,
-            child: Bio(
-              visible: visible,
-              widget: PortfolioText(),
-            ),
-          )
-        ],
-      )),
+      body: ScreenSizer.isBigMobile(context) ||
+              ScreenSizer.isMobile(context) ||
+              ScreenSizer.isSmallTablet(context)
+          ? PortfolioMobile(visible: visible)
+          : PortfolioDesktop(visible: visible),
     );
+  }
+}
+
+class PortfolioMobile extends StatelessWidget {
+  const PortfolioMobile({
+    super.key,
+    required this.visible,
+  });
+
+  final bool visible;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scrollbar(
+      thumbVisibility: true,
+      thickness: 8.0,
+      radius: const Radius.circular(10),
+      child: SingleChildScrollView(
+        child: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const SizedBox(
+              height: 150,
+            ),
+            Container(
+              color: Colors.transparent,
+              height: 500,
+              width: ScreenSizer.deviceWidth(context) * 0.5,
+              child: const VideoPlayerScreen(
+                videoUrl: 'assets/videos/meditag.mp4',
+              ),
+            ),
+            const SizedBox(
+              height: 200,
+            ),
+            SizedBox(
+              //color: Colors.red,
+              width: ScreenSizer.deviceWidth(context) * 0.9,
+              child: Bio(
+                visible: visible,
+                widget: const PortfolioText(),
+              ),
+            )
+          ],
+        )),
+      ),
+    );
+  }
+}
+
+class PortfolioDesktop extends StatelessWidget {
+  const PortfolioDesktop({
+    super.key,
+    required this.visible,
+  });
+
+  final bool visible;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Container(
+          color: Colors.transparent,
+          height: 500,
+          width: ScreenSizer.deviceWidth(context) * 0.25,
+          child: const VideoPlayerScreen(
+            videoUrl: 'assets/videos/meditag.mp4',
+          ),
+        ),
+        SizedBox(
+          //color: Colors.red,
+          width: ScreenSizer.deviceWidth(context) * 0.6,
+          child: Bio(
+            visible: visible,
+            widget: const PortfolioText(),
+          ),
+        )
+      ],
+    ));
   }
 }
 
@@ -64,13 +132,17 @@ class PortfolioText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
-        height: ScreenSizer.deviceHeight(context) * 2,
+      child: SizedBox(
+        height: ScreenSizer.isBigMobile(context) ||
+                ScreenSizer.isMobile(context) ||
+                ScreenSizer.isSmallTablet(context)
+            ? ScreenSizer.deviceHeight(context) * 3
+            : ScreenSizer.deviceHeight(context) * 2,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
                 "MediTag is a Flutter-based mobile application designed to streamline the access to doctors' contact information within a hospital setting by leveraging NFC (Near Field Communication) technology. The primary goal of the app is to enhance hospital efficiency and improve the patient experience by making it easier and quicker to obtain necessary information about doctors."),
             Text('Features',
                 style: MyTextStyle.semiBold(
@@ -81,7 +153,7 @@ class PortfolioText extends StatelessWidget {
                 Text('• NFC Tag Reading:',
                     style: MyTextStyle.regular(
                         fontSize: 18, color: MyColors.grey600)),
-                Text(
+                const Text(
                     'Patients can use their mobile devices to scan NFC tags. This action instantly provides them with contact information for the doctor associated with the scanned tag. This feature is designed to save time and ensure that patients can quickly reach the right medical professional when needed.'),
               ],
             ),
@@ -91,7 +163,7 @@ class PortfolioText extends StatelessWidget {
                 Text('• NFC Tag Writing:',
                     style: MyTextStyle.regular(
                         fontSize: 18, color: MyColors.grey600)),
-                Text(
+                const Text(
                     "Hospital administrators are equipped with the ability to write or encode NFC tags with doctors' contact information. This makes it simple to update or deploy new tags across the hospital as doctors' details change or new doctors join the hospital."),
               ],
             ),
@@ -101,7 +173,7 @@ class PortfolioText extends StatelessWidget {
                 Text('• Profile Management:',
                     style: MyTextStyle.regular(
                         fontSize: 18, color: MyColors.grey600)),
-                Text(
+                const Text(
                     'Doctors have control over their profiles within the app. They can update details such as their availability, office hours, and other relevant contact information. This ensures that the information provided via NFC tags and other app features is always up-to-date.'),
               ],
             ),
@@ -111,34 +183,35 @@ class PortfolioText extends StatelessWidget {
                 Text('• Admin Dashboard:',
                     style: MyTextStyle.regular(
                         fontSize: 18, color: MyColors.grey600)),
-                Text(
+                const Text(
                     'Hospital administrators have access to a centralized dashboard within the app. This dashboard allows them to manage doctor information, oversee NFC tag data, and ensure that all information is current and accurate.'),
               ],
             ),
             Text('Key Objectives',
                 style: MyTextStyle.semiBold(
                     fontSize: 18, color: MyColors.grey600)),
-            Text(
+            const Text(
                 '• Seamless Access: The app aims to provide patients with seamless access to the contact information of available doctors, reducing the time and effort required to find the right medical professional.'),
-            Text(
+            const Text(
                 " • Efficient Management: MediTag facilitates the efficient management of doctors' information on NFC tags, ensuring that the hospital's technological infrastructure is both functional and up-to-date."),
-            Text(
+            const Text(
                 '• Enhanced Patient Experience: By providing quick and easy access to relevant doctor details, the app significantly improves the patient experience, making interactions within the hospital more convenient and less stressful.'),
             Text('Target Users',
                 style: MyTextStyle.semiBold(
                     fontSize: 18, color: MyColors.grey600)),
-            Text(
+            const Text(
                 '• Patients: Individuals seeking quick access to medical professionals within the hospital.'),
-            Text(
+            const Text(
                 '• Doctors: Medical professionals who need to manage their availability and contact information.'),
-            Text(
+            const Text(
                 '• Hospital Administration: Staff responsible for maintaining and managing hospital operations, including doctor information and patient interactions.'),
-            Container(
-              width: ScreenSizer.deviceWidth(context) * 0.4,
+            SizedBox(
+              width: ScreenSizer.deviceWidth(context),
               height: 70,
-              // color: Colors.red,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              child: const Wrap(
+                spacing: 5.0,
+                runSpacing: 2.0,
+                alignment: WrapAlignment.start,
                 children: [
                   Skills(
                     text: 'Flutter',
@@ -158,7 +231,7 @@ class PortfolioText extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 200,
             )
           ],
@@ -167,6 +240,3 @@ class PortfolioText extends StatelessWidget {
     );
   }
 }
-
-
-

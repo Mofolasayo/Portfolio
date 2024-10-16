@@ -34,7 +34,9 @@ class _MalltiverseState extends State<Malltiverse>
         automaticallyImplyLeading: true,
         title: const Text('Malltiverse'),
       ),
-      body: ScreenSizer.isBigMobile(context) || ScreenSizer.isMobile(context)
+      body: ScreenSizer.isBigMobile(context) ||
+              ScreenSizer.isMobile(context) ||
+              ScreenSizer.isSmallTablet(context)
           ? MalltiverseMobile(visible: visible)
           : MalltiverseDesktop(visible: visible),
     );
@@ -51,34 +53,41 @@ class MalltiverseMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          const SizedBox(
-            height: 180,
+    return Scrollbar(
+      thumbVisibility: true,
+      thickness: 8.0,
+      radius: const Radius.circular(10),
+      child: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const SizedBox(
+                height: 100,
+              ),
+              Container(
+                color: Colors.transparent,
+                height: ScreenSizer.deviceHeight(context) * 0.6,
+                width: ScreenSizer.deviceWidth(context),
+                child: const VideoPlayerScreen(
+                  videoUrl: 'assets/videos/malltiverse.mp4',
+                ),
+              ),
+              const SizedBox(
+                height: 200,
+              ),
+              SizedBox(
+                //color: Colors.red,
+                // height: ScreenSizer.deviceHeight(context) * 0.5,
+                width: ScreenSizer.deviceWidth(context) * 0.9,
+                child: Bio(
+                  visible: visible,
+                  widget: const MalltiverseDescription(),
+                ),
+              )
+            ],
           ),
-          Container(
-            color: Colors.transparent,
-            height: ScreenSizer.deviceHeight(context) * 0.6,
-            width: ScreenSizer.deviceWidth(context),
-            child: const VideoPlayerScreen(
-              videoUrl: 'assets/videos/malltiverse.mp4',
-            ),
-          ),
-          const SizedBox(
-            height: 200,
-          ),
-          SizedBox(
-            //color: Colors.red,
-            // height: ScreenSizer.deviceHeight(context) * 0.5,
-            width: ScreenSizer.deviceWidth(context) * 0.9,
-            child: Bio(
-              visible: visible,
-              widget: const MalltiverseText(),
-            ),
-          )
-        ],
+        ),
       ),
     );
   }
@@ -111,11 +120,28 @@ class MalltiverseDesktop extends StatelessWidget {
           width: ScreenSizer.deviceWidth(context) * 0.6,
           child: Bio(
             visible: visible,
-            widget: const MalltiverseText(),
+            widget: const MalltiverseDescription(),
           ),
         )
       ],
     ));
+  }
+}
+
+class MalltiverseDescription extends StatelessWidget {
+  const MalltiverseDescription({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ScreenSizer.isBigMobile(context) ||
+            ScreenSizer.isMobile(context) ||
+            ScreenSizer.isSmallTablet(context)
+        ? const MalltiverseText()
+        : const SingleChildScrollView(
+            child: MalltiverseText(),
+          );
   }
 }
 
@@ -127,7 +153,11 @@ class MalltiverseText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: ScreenSizer.deviceHeight(context) * 3,
+      height: ScreenSizer.isBigMobile(context) ||
+              ScreenSizer.isMobile(context) ||
+              ScreenSizer.isSmallTablet(context)
+          ? ScreenSizer.deviceHeight(context) * 3.5
+          : ScreenSizer.deviceHeight(context) * 2,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -231,8 +261,7 @@ class MalltiverseText extends StatelessWidget {
             child: const Wrap(
               spacing: 5.0,
               runSpacing: 2.0,
-              alignment:
-                  WrapAlignment.start, // Align items at the start of each line
+              alignment: WrapAlignment.start,
               children: [
                 Skills(
                   text: 'Flutter',
