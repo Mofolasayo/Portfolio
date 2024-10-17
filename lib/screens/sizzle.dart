@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:mofolasayo/utils/bio.dart';
 import 'package:mofolasayo/utils/colors.dart';
+import 'package:mofolasayo/utils/icons.dart';
 import 'package:mofolasayo/utils/my_textstyle.dart';
 import 'package:mofolasayo/utils/screen_sizer.dart';
 import 'package:mofolasayo/utils/skills.dart';
+import 'package:mofolasayo/utils/url_launchers.dart';
 import 'package:mofolasayo/utils/video_player.dart';
 
 class Sizzle extends StatefulWidget {
@@ -32,6 +35,13 @@ class _SizzleState extends State<Sizzle> with TickerProviderStateMixin {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         title: const Text("Sizzle"),
+        actions: [
+          InkWell(
+              onTap: () {
+                launchURL('https://github.com/Mofolasayo/Sizzle');
+              },
+              child: SvgPicture.string(MyIcons.github)),
+        ],
       ),
       body: ScreenSizer.isBigMobile(context) ||
               ScreenSizer.isMobile(context) ||

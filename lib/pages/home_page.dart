@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mofolasayo/pages/about_page.dart';
 import 'package:mofolasayo/pages/contact_page.dart';
@@ -7,8 +8,10 @@ import 'package:mofolasayo/pages/experience_page.dart';
 import 'package:mofolasayo/pages/projects_page.dart';
 import 'package:mofolasayo/pages/skills_page.dart';
 import 'package:mofolasayo/utils/colors.dart';
+import 'package:mofolasayo/utils/icons.dart';
 import 'package:mofolasayo/utils/my_textstyle.dart';
 import 'package:mofolasayo/utils/screen_sizer.dart';
+import 'package:mofolasayo/utils/url_launchers.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -71,6 +74,7 @@ class _HomePageState extends State<HomePage> {
     print('device WIdth is $deviceWidth');
 
     return Scaffold(
+        backgroundColor: MyColors.grey1000,
         appBar: AppBar(
           leading: Padding(
             padding: const EdgeInsets.only(top: 15.0, left: 15.0),
@@ -164,29 +168,28 @@ class _HomePageState extends State<HomePage> {
                                 curve: Curves.easeInOut);
                             Navigator.pop(context);
                           }),
-                    Container(
+                    SizedBox(
                       // color: Colors.yellow,
                       width: deviceWidth * 0.4,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          /*InkWell(
-                              onTap: () {
-                                //launchURL('https://x.com/moe_thetechgirl/');
-                              },
-                              child: SvgPicture.string(xIcon)),
                           InkWell(
                               onTap: () {
-                               // launchURL('https://github.com/Mofolasayo/');
+                                launchURL('https://x.com/Mofolasayo_O');
                               },
-                              child: SvgPicture.string(github)),
+                              child: SvgPicture.string(MyIcons.xIcon)),
+                          InkWell(
+                              onTap: () {
+                                launchURL('https://github.com/Mofolasayo/');
+                              },
+                              child: SvgPicture.string(MyIcons.github)),
                           InkWell(
                               onTap: () {
                                 launchURL(
                                     'https://www.linkedin.com/in/mofolasayo-osikoya-b53a832a0/');
                               },
-                              child: SvgPicture.string(linkedIn)),
-                          SvgPicture.string(figma)*/
+                              child: SvgPicture.string(MyIcons.linkedIn)),
                         ],
                       ),
                     ),
@@ -194,34 +197,17 @@ class _HomePageState extends State<HomePage> {
                 ),
               )
             : null,
-        body: SingleChildScrollView(
-          child: ScrollablePositionedList.builder(
-            initialScrollIndex: 0,
-            shrinkWrap: true,
-            itemPositionsListener: itemPositionsListener,
-            itemScrollController: itemScrollController,
-            itemCount: pages.length,
-            itemBuilder: (context, index) {
-              final page = pages[index];
+        body: ScrollablePositionedList.builder(
+          initialScrollIndex: 0,
+          shrinkWrap: true,
+          itemPositionsListener: itemPositionsListener,
+          itemScrollController: itemScrollController,
+          itemCount: pages.length,
+          itemBuilder: (context, index) {
+            final page = pages[index];
 
-              return page;
-            },
-          ),
+            return page;
+          },
         ));
   }
 }
-/*Text(
-                        'Home',
-                        style: MyTextStyle.regular(
-                            color: MyColors.grey600, fontSize: 15),
-                      ),
-                      Text(
-                        'Projects',
-                        style: MyTextStyle.regular(
-                            color: MyColors.grey600, fontSize: 15),
-                      ),
-                      Text(
-                        'Contacts',
-                        style: MyTextStyle.regular(
-                            color: MyColors.grey600, fontSize: 15),
-                      ),*/

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mofolasayo/screens/angrybird.dart';
 import 'package:mofolasayo/screens/calculator.dart';
-import 'package:mofolasayo/screens/decorDash.dart';
+import 'package:mofolasayo/screens/decor_dash.dart';
 import 'package:mofolasayo/screens/malltiverse.dart';
 import 'package:mofolasayo/screens/meditag.dart';
 import 'package:mofolasayo/screens/portifolio.dart';
@@ -28,7 +28,6 @@ class ProjectsPage extends StatelessWidget {
 
           //padding: const EdgeInsets.only(left: 30.0, top: 40, bottom: 0),
           child: Column(
-            
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
@@ -69,7 +68,6 @@ class ProjectsPage extends StatelessWidget {
                         ),
                         SizedBox(
                           width: ScreenSizer.isDesktop(context) ? 30 : 25,
-
                         ),
                         ProjectContainer(
                           imageUrl: 'assets/images/decordash2.png',
@@ -79,7 +77,6 @@ class ProjectsPage extends StatelessWidget {
                         ),
                         SizedBox(
                           width: ScreenSizer.isDesktop(context) ? 30 : 25,
-
                         ),
                         ProjectContainer(
                             imageUrl: 'assets/images/angrybird.png',
@@ -88,7 +85,6 @@ class ProjectsPage extends StatelessWidget {
                             widget: Angrybird()),
                         SizedBox(
                           width: ScreenSizer.isDesktop(context) ? 30 : 25,
-
                         ),
                       ],
                     ),
@@ -110,7 +106,6 @@ class ProjectsPage extends StatelessWidget {
                         ),
                         SizedBox(
                           width: ScreenSizer.isDesktop(context) ? 30 : 25,
-
                         ),
                         ProjectContainer(
                           imageUrl: 'assets/images/sizzle.jpg',
@@ -120,7 +115,6 @@ class ProjectsPage extends StatelessWidget {
                         ),
                         SizedBox(
                           width: ScreenSizer.isDesktop(context) ? 30 : 25,
-
                         ),
                         ProjectContainer(
                           imageUrl: 'assets/images/calculator.png',
@@ -130,7 +124,6 @@ class ProjectsPage extends StatelessWidget {
                         ),
                         SizedBox(
                           width: ScreenSizer.isDesktop(context) ? 30 : 25,
-
                         ),
                         ProjectContainer(
                           imageUrl: 'assets/images/meditag.png',
@@ -140,10 +133,8 @@ class ProjectsPage extends StatelessWidget {
                         ),
                         SizedBox(
                           width: ScreenSizer.isDesktop(context) ? 30 : 25,
-
                         ),
                       ],
-                      
                     ),
                   ),
                   SizedBox(

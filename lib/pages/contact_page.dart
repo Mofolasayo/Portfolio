@@ -5,6 +5,7 @@ import 'package:mofolasayo/utils/colors.dart';
 import 'package:mofolasayo/utils/icons.dart';
 import 'package:mofolasayo/utils/my_textstyle.dart';
 import 'package:mofolasayo/utils/screen_sizer.dart';
+import 'package:mofolasayo/utils/url_launchers.dart';
 
 class ContactPage extends StatelessWidget {
   const ContactPage({super.key});
@@ -24,7 +25,8 @@ class ContactPage extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 50.0, bottom: 10),
-                  child: Text('Want to connect with me?',
+                  child: Text(
+                    'Want to connect with me?',
                     style: MyTextStyle.medium(
                         fontSize: 22, color: MyColors.grey500),
                   ),
@@ -43,11 +45,17 @@ class ContactPage extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0, right: 0),
-                        child: Text("osikoyamofolasayo@gmail.com",
-                            style:
-                            MyTextStyle.medium(
-                                color: Color.fromARGB(202, 255, 255, 255),
-                                fontSize: 17)),
+                        child: InkWell(
+                          onTap: () {
+                            sendEmail(
+                                email: 'osikoyamofolasayo@gmail.com',
+                                body: 'Hello Mofolasayo ');
+                          },
+                          child: Text("osikoyamofolasayo@gmail.com",
+                              style: MyTextStyle.medium(
+                                  color: Color.fromARGB(202, 255, 255, 255),
+                                  fontSize: 17)),
+                        ),
                       ),
                       //SvgPicture.string(copyIcon, height: 28),
                       IconButton(
@@ -77,12 +85,16 @@ class ContactPage extends StatelessWidget {
                       SvgPicture.string(MyIcons.phoneIcon, height: 25),
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0, right: 0),
-                        child: Text("+2348104942229",
-                            style:
-                                MyTextStyle.medium(
-                              fontSize: 17,
-                              color: Color.fromARGB(202, 255, 255, 255),
-                            )),
+                        child: InkWell(
+                          onTap: () {
+                            makePhoneCall('+2348104942229');
+                          },
+                          child: Text("+2348104942229",
+                              style: MyTextStyle.medium(
+                                fontSize: 17,
+                                color: Color.fromARGB(202, 255, 255, 255),
+                              )),
+                        ),
                       ),
                       IconButton(
                         icon: SvgPicture.string(MyIcons.copyIcon, height: 28),
@@ -126,7 +138,7 @@ class ContactPage extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          //launchURL('https://x.com/moe_thetechgirl/');
+                          launchURL('https://x.com/Mofolasayo_O');
                         },
                         child: SvgPicture.string(
                           MyIcons.xIcon,
@@ -134,13 +146,13 @@ class ContactPage extends StatelessWidget {
                       ),
                       GestureDetector(
                           onTap: () {
-                            //launchURL('https://github.com/Mofolasayo/');
+                            launchURL('https://github.com/Mofolasayo/');
                           },
                           child: SvgPicture.string(MyIcons.github)),
                       GestureDetector(
                           onTap: () {
-                            /* launchURL(
-                                'https://www.linkedin.com/in/mofolasayo-osikoya-b53a832a0/');*/
+                            launchURL(
+                                'https://www.linkedin.com/in/mofolasayo-osikoya-b53a832a0/');
                           },
                           child: SvgPicture.string(MyIcons.linkedIn)),
                       //SvgPicture.string(figma)

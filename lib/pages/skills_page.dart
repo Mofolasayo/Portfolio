@@ -6,7 +6,7 @@ class SkillsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SizedBox(
       height: 100,
       // color: Colors.purple,
       child: Center(child: AnimatedIconsRow()),

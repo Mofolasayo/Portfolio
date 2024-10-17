@@ -15,7 +15,7 @@ class _ExpereiencePageState extends State<ExpereiencePage>
   bool visible = true;
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 5), () {
       setState(() {
         visible = false;
       });
@@ -34,14 +34,14 @@ class _ExpereiencePageState extends State<ExpereiencePage>
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
                 width: ScreenSizer.deviceWidth(context) * 0.9,
                 child: Text(
                   'Work Experience',
                   style:
                       MyTextStyle.medium(fontSize: 22, color: MyColors.grey700),
                 )),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expereience(
@@ -54,7 +54,7 @@ class _ExpereiencePageState extends State<ExpereiencePage>
         
         ''',
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Expereience(
@@ -64,7 +64,7 @@ class _ExpereiencePageState extends State<ExpereiencePage>
               duties:
                   '''• Collaborated with a team to develop intuitive mobile applications using Flutter, integrating RESTful APIs and third-party libraries to enhance functionality. \n• Engaged in code reviews and utilized Git/GitHub for efficient source code management. \n• Implemented local data storage with Hive, ensuring offline capabilities, while maintaining clean, well-documented Dart code.''',
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             )
           ],
@@ -93,7 +93,7 @@ class Expereience extends StatelessWidget {
     return AnimatedOpacity(
       opacity: visible ? 0.0 : 1.0,
       duration: const Duration(seconds: 10),
-      child: Container(
+      child: SizedBox(
         width: ScreenSizer.deviceWidth(context) * 0.9,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -103,7 +103,7 @@ class Expereience extends StatelessWidget {
               role,
               style: MyTextStyle.medium(fontSize: 20, color: MyColors.grey500),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Text(
@@ -111,7 +111,7 @@ class Expereience extends StatelessWidget {
               style: MyTextStyle.regular(
                   fontSize: 16, isItalic: true, color: MyColors.grey500),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(

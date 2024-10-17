@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:mofolasayo/utils/bio.dart';
 import 'package:mofolasayo/utils/colors.dart';
+import 'package:mofolasayo/utils/icons.dart';
 import 'package:mofolasayo/utils/my_textstyle.dart';
 import 'package:mofolasayo/utils/screen_sizer.dart';
 import 'package:mofolasayo/utils/skills.dart';
+import 'package:mofolasayo/utils/url_launchers.dart';
 import 'package:mofolasayo/utils/video_player.dart';
 
 class Decordash extends StatefulWidget {
@@ -31,6 +34,13 @@ class _DecordashState extends State<Decordash> with TickerProviderStateMixin {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         title: const Text('Decor Dash'),
+        actions: [
+          InkWell(
+              onTap: () {
+                launchURL('https://github.com/Mofolasayo/DecorDash');
+              },
+              child: SvgPicture.string(MyIcons.github)),
+        ],
       ),
       body: ScreenSizer.isBigMobile(context) ||
               ScreenSizer.isMobile(context) ||
@@ -60,7 +70,7 @@ class DecorDashMobile extends StatelessWidget {
             child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 150,
             ),
             Container(
@@ -71,10 +81,10 @@ class DecorDashMobile extends StatelessWidget {
                 videoUrl: 'assets/videos/newDecorDash.mp4',
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 200,
             ),
-            Container(
+            SizedBox(
               //color: Colors.red,
               width: ScreenSizer.deviceWidth(context) * 0.9,
               child: Bio(
@@ -111,7 +121,7 @@ class DecorDashDesktop extends StatelessWidget {
             videoUrl: 'assets/videos/newDecorDash.mp4',
           ),
         ),
-        Container(
+        SizedBox(
           //color: Colors.red,
           width: ScreenSizer.deviceWidth(context) * 0.6,
           child: Bio(
@@ -148,7 +158,7 @@ class DecorDashText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: ScreenSizer.isBigMobile(context) ||
               ScreenSizer.isMobile(context) ||
               ScreenSizer.isSmallTablet(context)

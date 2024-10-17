@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mofolasayo/utils/colors.dart';
 import 'package:mofolasayo/utils/icons.dart';
+import 'package:mofolasayo/utils/url_launchers.dart';
 import 'package:mofolasayo/widgets/resume.dart';
 
 class ResumeAndSocials extends StatelessWidget {
@@ -19,9 +20,13 @@ class ResumeAndSocials extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         OutlinedButton(
-            onPressed: () {},
+            onPressed: () {
+              launchURL(
+                  'https://drive.google.com/file/d/1KCnDOVnnVDCenNKAIeNRU37rVYTVcxu7/view?usp=sharing');
+            },
             child: const Expanded(
               child: Resume(),
             )),
@@ -33,7 +38,7 @@ class ResumeAndSocials extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  // launchURL('https://x.com/moe_thetechgirl/');
+                  launchURL('https://x.com/Mofolasayo_O');
                 },
                 child: SvgPicture.string(
                   MyIcons.xIcon,
@@ -42,7 +47,7 @@ class ResumeAndSocials extends StatelessWidget {
               ),
               GestureDetector(
                   onTap: () {
-                    // launchURL('https://github.com/Mofolasayo/');
+                    launchURL('https://github.com/Mofolasayo/');
                   },
                   child: SvgPicture.string(
                     MyIcons.github,
@@ -50,8 +55,8 @@ class ResumeAndSocials extends StatelessWidget {
                   )),
               GestureDetector(
                   onTap: () {
-                    /* launchURL(
-                        'https://www.linkedin.com/in/mofolasayo-osikoya-b53a832a0/');*/
+                    launchURL(
+                        'https://www.linkedin.com/in/mofolasayo-osikoya-b53a832a0/');
                   },
                   child: SvgPicture.string(
                     MyIcons.linkedIn,

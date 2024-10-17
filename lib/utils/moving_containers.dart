@@ -58,7 +58,9 @@ class _AnimatedIconsRowState extends State<AnimatedIconsRow>
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: List.generate(
-          ScreenSizer.isDesktop(context) ? 14 : 6,
+          ScreenSizer.isDesktop(context) || ScreenSizer.isBigTablet(context)
+              ? 14
+              : 6,
           (index) => Container(
             width: 60,
             height: 60,

@@ -13,7 +13,9 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ScreenSizer.isBigMobile(context) || ScreenSizer.isMobile(context)
+      child: ScreenSizer.isBigMobile(context) ||
+              ScreenSizer.isMobile(context) ||
+              ScreenSizer.isSmallTablet(context)
           ? const Mobile()
           : const DesktopandTablet(),
     );
@@ -92,27 +94,27 @@ class DesktopandTablet extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 30.0),
-            child: SizedBox(
+            child: Expanded(
               // color: Colors.yellow,
-              height: ScreenSizer.isDesktop(context)
+              /*height: ScreenSizer.isDesktop(context)
                   ? ScreenSizer.deviceHeight(context) * 0.2 + 110
                   : ScreenSizer.deviceHeight(context) * 0.8 + 100,
-              width: ScreenSizer.deviceWidth(context) * 0.6,
+              width: ScreenSizer.deviceWidth(context) * 0.6,*/
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
-                    // color: Colors.red,
+                    //color: Colors.yellow,
                     child: AnimatedText(
                       myFontWeight: FontWeight.bold,
-                      textHeight: ScreenSizer.isDesktop(context)
-                          ? ScreenSizer.deviceHeight(context) * 0.08
-                          : ScreenSizer.deviceHeight(context) * 0.8,
+                      textHeight: ScreenSizer.deviceHeight(context) * 0.08,
                       fontSize40: ScreenSizer.isDesktop(context) ? 35 : 20,
                       textWidth: ScreenSizer.deviceWidth(context) * 0.6,
                     ),
                   ),
-                  SizedBox(
+                  Container(
+                    // color: Colors.red,
+
                     // height: ScreenSizer.isDesktop(context) ? 100 : 80,
                     width: ScreenSizer.deviceWidth(context) * 0.6,
                     //width: ScreenSizer.isDesktop(context) ? 800 : 600,
